@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map - LibraryHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C5F7C',
+                        secondary: '#4A9B7F',
+                        destructive: '#FF6B6B',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="flex justify-center mb-4">
+                <svg class="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold mb-2">LibraryHub Site Map</h1>
+            <p class="text-gray-600 dark:text-gray-400">Navigate to any page in the application</p>
+
+            <button onclick="toggleDarkMode()" class="mt-4 h-11 px-6 bg-gray-200 dark:bg-gray-700 rounded-xl font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                Toggle Dark Mode
+            </button>
+        </div>
+
+        <!-- Public Pages -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Public Pages
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="index.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">🏠 Landing Page</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Homepage with hero, features, and footer</p>
+                </a>
+
+                <a href="login.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">🔐 Login</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Login with demo credentials</p>
+                    <p class="text-xs text-primary mt-2">Demo: admin@lib.com / admin123</p>
+                </a>
+
+                <a href="signup.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">📝 Sign Up</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Create new account</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Student Pages -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                Student Pages (Requires Login)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="dashboard.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">📊 Dashboard</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Personalized student dashboard</p>
+                </a>
+
+                <a href="search.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">🔍 Search Books</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Search with filters and grid/list view</p>
+                </a>
+
+                <a href="book-detail.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">📖 Book Details</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Detailed book view with borrow/reserve</p>
+                </a>
+
+                <a href="account.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">👤 My Account</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Account with tabs: borrowed, fines, history, wishlist, card</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Admin Pages -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                Admin Pages (Requires Admin Login)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="admin.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">⚡ Admin Dashboard</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Stats, recent activity, quick actions</p>
+                </a>
+
+                <a href="admin-books.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">📚 Book Management</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">CRUD operations, search, filter</p>
+                </a>
+
+                <a href="admin-overdues.html" class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">⏰ Overdue Books</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Track overdues, send reminders, waive fines</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Info -->
+        <div class="bg-gradient-to-br from-primary to-secondary text-white rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-4">Quick Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-bold mb-2">Demo Credentials:</h3>
+                    <ul class="space-y-1 text-sm opacity-90">
+                        <li>• Admin: admin@lib.com / admin123</li>
+                        <li>• Student: Any email / Any password</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Technologies Used:</h3>
+                    <ul class="space-y-1 text-sm opacity-90">
+                        <li>• Vanilla HTML5</li>
+                        <li>• Tailwind CSS (CDN)</li>
+                        <li>• Vanilla JavaScript</li>
+                        <li>• LocalStorage for state</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Features:</h3>
+                    <ul class="space-y-1 text-sm opacity-90">
+                        <li>• Dark mode support</li>
+                        <li>• Fully responsive design</li>
+                        <li>• Role-based authentication</li>
+                        <li>• No build process needed</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Core Files:</h3>
+                    <ul class="space-y-1 text-sm opacity-90">
+                        <li>• app.js - Shared utilities</li>
+                        <li>• styles.css - Custom styles</li>
+                        <li>• book-data.js - Sample data</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center text-gray-600 dark:text-gray-400">
+            <p>LibraryHub - Complete HTML/CSS/JS Implementation</p>
+            <p class="text-sm mt-2">All pages are fully functional with demo data</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        initDarkMode();
+    </script>
+</body>
+</html>
