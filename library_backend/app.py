@@ -70,36 +70,57 @@ def get_users():
 @app.route("/register", methods=["POST"])
 def register():
 
-    data = request.json
+    try:
+        data = request.json
+        
 
-    name = data["name"]
-    email = data["email"]
-    password = generate_password_hash(data["password"])
-    role = data["role"]
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
+        email = data.get("email")
+        phone = data.get("phone")
+        password = data.get("password")
+        student_id = data.get("student_id")
 
-    conn = get_db_connection()
-    cursor = conn.cursor()
+        if not all([first_name, last_name, email, phone, password]):
+            return jsonify({"message": "Missing required fields"}), 400
 
-    cursor.execute("""
-        INSERT INTO users (name,email,password,role)
-        VALUES (%s,%s,%s,%s)
-    """, (name,email,password,role))
+        password_hash = generate_password_hash(password)
 
-    conn.commit()
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
 
-    # SEND WELCOME MAIL
-    send_email(
-        email,
-        "Welcome to Library",
-        f"Hello {name}, your account has been created successfully."
-    )
+        # ✅ CHECK IF EMAIL ALREADY EXISTS
+        cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+        existing_user = cursor.fetchone()
 
-    cursor.close()
-    conn.close()
+        if existing_user:
+            return jsonify({"message": "Email already registered"}), 409
 
-    return jsonify({
-        "message":"User registered successfully + Mail sent"
-    })
+        # ✅ INSERT USER
+        cursor.execute("""
+            INSERT INTO users
+            (first_name, last_name, email, phone, password_hash, student_id, role)
+            VALUES (%s,%s,%s,%s,%s,%s,%s)
+        """, (
+            first_name,
+            last_name,
+            email,
+            phone,
+            password_hash,
+            student_id,
+            "student"
+        ))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return jsonify({"message": "User registered successfully"}), 201
+
+    except Exception as e:
+        print("REGISTER ERROR:", e)
+        return jsonify({"message": "Server error"}), 500
+
 
 # -------------------------------
 # LOGIN

@@ -44,7 +44,7 @@
                     <p class="text-gray-600 dark:text-gray-400">Join LibraryHub and start your learning journey</p>
                 </div>
 
-                <form id="signup-form" onsubmit="handleSignup(event)" class="space-y-6">
+                <form  onsubmit="handleSignup(event)" >
                     <!-- Name Fields -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
@@ -205,37 +205,58 @@
     </div>
 
     <script src="app.js"></script>
+    
     <script>
-        function handleSignup(event) {
-            event.preventDefault();
-            
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            if (password !== confirmPassword) {
-                showToast('Passwords do not match!', 'error');
-                return;
-            }
-            
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            
-            // Simulate account creation
-            Storage.set('user', { 
-                email, 
-                role: 'student', 
-                name: `${firstName} ${lastName}` 
-            });
-            
-            showToast('Account created successfully!', 'success');
-            
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
+async function handleSignup(event) {
+    event.preventDefault();
+
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+
+    const fullName = firstName + " " + lastName;
+
+    try {
+        const res = await fetch("http://127.0.0.1:5000/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                first_name: document.getElementById("firstName").value,
+                last_name: document.getElementById("lastName").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                password: document.getElementById("password").value,
+                student_id: document.getElementById("studentId").value || null
+        })
+
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            alert("Signup Successful!");
+            window.location.href = "login.html";
+        } else {
+            alert(data.message || "Signup Failed");
         }
 
-        initDarkMode();
-    </script>
+    } catch (err) {
+        console.error(err);
+        alert("Server Error");
+    }
+}
+</script>
+
+
 </body>
 </html>
